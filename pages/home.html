@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block utilities %}
+    <a class="icon-utility" href="/home">
+        <img src="../static/img/home.png" alt="Home">
+    </a>
+    <a class="icon-utility" href="/perfil/{{ profile }}">
+        <img src="../static/img/perfil.png" alt="Home">
+    </a>
+    <a class="icon-utility" href="/courses?page=1">
+        <img src="../static/img/list.png" alt="Home">
+    </a>
+    <a class="icon-utility" href="/logout">
+        <img src="../static/img/logout.png" alt="Home">
+    </a>
+    
+{% endblock %}
+
+{% block head %}
+
+    <link rel="stylesheet" type="text/css" href="../static/css/login.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/home.css">
+    
+{% endblock %}
+
+{% block content %}
+
+    <div class="home-panel">
+        <div class="left-vertical home-box" id="content-box" >
+            <h3 class="home-text"> Bem-vindo, {{ name }}! </h3>
+        </div>
+        <div class="home-box" id="content-box">
+            <h3 class="home-text"> Disciplinas cadastradas </h3>
+            <p class="bt-text"> {{ n_disc }}</p>
+        </div>
+        <div class="home-box right-vertical" id="content-box" > 
+            <h3 class="home-text">
+                Alunos cadastrados
+            </h3>
+            <p class="bt-text"> {{ n_users }} </p>
+        </div>
+        <div class="home-box" id="content-box">
+            <h3 class="home-text">
+                Professores cadastrados
+            </h3>
+           <p class="bt-text"> {{ n_prof }} </p>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,80 @@
+@font-face {
+    font-family: 'Stack';
+    src: url('../ttf/Gugi-Regular.ttf');
+}
+
+:root {
+    --primary-color: #32a541;
+    --secondary-color: #1a456c;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Stack', sans-serif;
+    color: #ffffff;
+    display: flex;
+    margin: 0 auto;
+    max-width: 62em;
+    width: 100%;
+    justify-content: center;
+    padding: 0.6em;
+    align-items: center;
+    height: 92%;
+}
+
+html {
+    background-image: url('../img/asasa.png');
+    background-size: cover;
+    animation: g_transition 9s ease infinite;
+}
+
+#content-box {
+    background-image: url('../img/banner.png');
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 12px;
+    background-size:cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align:center;
+    padding: 1.1em;
+}
+
+.main-footer {
+    display: flex;
+    height: 8%;
+    width: 100%;
+    max-width: 62em;
+    background-color: #ffffff;
+    position: fixed;
+    bottom: 0;
+    border-radius: 20px 20px 0 0;
+    color: #1f1f1f;
+    align-items: center;
+    justify-content: center;
+    padding: 0 2em;
+    gap: 1.2em;
+    backdrop-filter: blur(10em);
+}
+
+@keyframes g_transition {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}

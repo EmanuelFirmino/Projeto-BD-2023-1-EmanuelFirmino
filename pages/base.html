@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<link rel="stylesheet" type="text/css" href="../static/css/base.css">
+	<link rel="icon" type="image/icon" href="../static/img/favicon.png">
+	{% block head %} {% endblock %}
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title> {% block title %} {{ title }} {% endblock %} </title>
+</head>
+
+<body>
+	{% block content %}
+	{% endblock %}
+</body>
+<footer class="main-footer">
+	{% block utilities %}
+	{% endblock %}
+</footer>
+</html>

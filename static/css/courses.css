@@ -1,0 +1,53 @@
+.courses-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    gap: 0.9em;
+}
+
+.course-card {
+    width: 100%;
+    height: fit-content;
+    background-image: url('../img/banner.png');
+    display: flex;
+    align-items: center;
+    gap: 0.7em;
+    border:solid 2px #fff;
+    justify-content: center;
+    border-radius: 30px;
+    padding: 0.9em;
+    transition: .3s ease-in-out;
+}
+
+.function-btn {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0.5em;
+}
+
+.function-btn > a {
+    font-weight: 600;
+    background-color: var(--secondary-color);
+    padding: 1em;
+    border-radius: 50%;
+    border:outset 3px #fff;
+
+}
+
+.course-card:hover {
+    background-image: url('../img/banner2.png');
+    
+}
+
+.course-card:focus {
+    background-image: url('../img/banner2.png');
+    
+}
+
+a {
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+}

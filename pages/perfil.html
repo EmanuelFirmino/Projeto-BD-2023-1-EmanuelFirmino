@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block utilities %}
+
+    <a class="icon-utility" href="/home">
+        <img src="../static/img/home.png" alt="Home">
+    </a>
+    <a class="icon-utility" href="#">
+        <img src="../static/img/perfil.png" alt="Home">
+    </a>
+    <a class="icon-utility" href="/courses?page=1">
+        <img src="../static/img/list.png" alt="Home">
+    </a>
+    <a class="icon-utility" href="/logout">
+        <img src="../static/img/logout.png" alt="Home">
+    </a>
+    
+{% endblock %}
+
+{% block head %}
+
+    <link rel="stylesheet" type="text/css" href="../static/css/login.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/home.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/perfil.css">
+    
+{% endblock %}
+
+{% block content %}
+
+    <div class="home-panel">
+        <div class="home-box profile-pic" id="content-box-main">
+            {% if profile_pic %}
+                <img src="{{ profile_pic }}" alt="Avatar">
+            {% else %}
+                <img src="../static/img/anon_user.png" alt="Avatar">
+            {% endif %}
+
+            <form action="" method="post">
+                <input type="file" name="image">
+                <input type="submit" value="Editar avatar"> 
+            </form>
+        </div>
+        <div class="home-box left-bar" id="content-box">
+            <h2 class="home-text" id="full">Nome</h2>
+            <p class="bt-text">{{ name }}</p>
+            <h2 class="home-text" id="full">Matrícula</h2>
+            <p class="bt-text">{{ matr }}</p>
+            <h2 class="home-text" id="full">Curso</h2>
+            <p class="bt-text">{{ course }}</p>
+            
+            
+        </div>
+        <div class="home-box" id="content-box">
+
+            {% if isAdmin %}
+            <div class="contain-admin">
+            <h1 class="home-text-admin" id="full"> Administrador </h1>
+            </div>
+            {% else %}
+            <h1 class="home-text" id="full"> Aluno </h1>
+            {% endif %}
+        
+        </div>
+
+    </div>
+
+{% endblock %}

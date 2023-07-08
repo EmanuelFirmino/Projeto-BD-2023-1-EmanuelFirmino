@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+    <link rel="stylesheet" type="text/css" href="../static/css/login.css">
+    
+{% endblock %}
+
+{% block content %}
+
+    <div class="login-box" id="content-box">
+        <img id="main-logo" src="../static/img/unb.png" alt="" width="200px">
+        <img src="../static/img/stars.png" alt="" width="200px">
+        <h1 class="text-type">Avalia UnB</h1>
+        <form action="/login" method="post">
+            <input id="login-field" type="text" name="user" placeholder="Matrícula">
+            <input id="login-field" type="password" name="passwd" placeholder="Senha">
+            <input id="login-btn" type="submit" value="Entrar">
+        </form>
+        {% with messages = get_flashed_messages() %}
+            {% for message in messages %}
+                <div class="error-box">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endwith %}
+    </div>
+
+{% endblock %}
+
+{% block utilities %}
+    <a class="icon-utility" href="/home">
+        <img src="../static/img/home.png" alt="Home">
+    </a> 
+{% endblock %}

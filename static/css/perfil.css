@@ -1,0 +1,77 @@
+#content-box-main {
+    background-image: url('../img/banner2.png');
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 12px;
+    background-size:cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align:center;
+    padding: 0.7em;
+}
+
+.home-text-admin {
+    font-size: 2em;
+    background: linear-gradient(to right, #ba297e, #ba29b8, #8129ba,#5429ba);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    padding: 0.2em;
+    border-radius: 15px 15px 0 0;
+}
+
+.contain-admin {
+    width: fit-content;
+    background-color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    align-items: center;
+    padding: 1.5em;
+    animation: admin 2s linear infinite alternate-reverse;
+    border-radius: 5px;
+
+}
+
+.profile-pic {
+    grid-column-start: 2;
+}
+
+.profile-pic > img {
+    max-width: 18em;
+    border-radius: 50%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4em;
+}
+
+form > input {
+    background-color: var(--secondary-color);
+    padding: 0.4em;
+    color: #fff;
+    font-family: inherit;
+    border: solid 2px #fff;
+}
+
+.left-bar {
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+
+#full {
+    width: 100%;
+}
+
+@keyframes admin {
+    from {
+        background-color: rgba(255, 255, 255, 0.4);
+        border-radius: 0;
+    }
+
+    to {
+        background-color: rgba(255, 255, 255, 1);
+        border-radius: 20px;
+    }
+}

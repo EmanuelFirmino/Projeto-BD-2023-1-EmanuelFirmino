@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="../static/css/login.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/home.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/courses.css">
+{% endblock %}
+
+{% block utilities %}
+    <a class="icon-utility" href="/home">
+        <img src="../static/img/home.png" alt="Home">
+    </a>
+    <a class="icon-utility" href="/perfil/{{ profile }}">
+        <img src="../static/img/perfil.png" alt="Home">
+    </a>
+    <a class="icon-utility" href="#">
+        <img src="../static/img/list.png" alt="Home">
+    </a>
+    <a class="icon-utility" href="/logout">
+        <img src="../static/img/logout.png" alt="Home">
+    </a>
+    
+{% endblock %}
+
+{% block content %}
+
+<ul class="courses-list">
+    {% for course in courses %}
+        <a href="/template/{{ course[0] }}">
+        <li class="course-card">
+            <h3>{{ course[0] }}</h3>
+            <h3> <span> | </span>{{ course[1] }}</h3>
+        </li>
+        </a>
+    {% endfor %}
+    <div class="function-btn">
+        {% if page != 1 %}
+            <a href="/courses?page={{ page - 1 }}"><<</a>
+        {% endif %}
+        <a href="/courses?page={{ page + 1 }}">>></a>
+    </div>
+</ul>
+    
+{% endblock %}

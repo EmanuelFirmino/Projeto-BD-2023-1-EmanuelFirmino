@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="../static/css/login.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/home.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/template.css">        
+{% endblock %}
+
+{% block utilities %}
+    <a class="icon-utility" href="/home">
+        <img src="../static/img/home.png" alt="Home">
+    </a>
+    <a class="icon-utility" href="/perfil/{{ profile }}">
+        <img src="../static/img/perfil.png" alt="Home">
+    </a>
+    <a class="icon-utility" href="/courses?page=1">
+        <img src="../static/img/list.png" alt="Home">
+    </a>
+    <a class="icon-utility" href="/logout">
+        <img src="../static/img/logout.png" alt="Home">
+    </a>
+    
+{% endblock %}
+
+{% block content %}
+    <div class="template-panel">
+        <div class="home-box" id="content-box">
+            <h3 class="home-text">
+                Código disciplina
+            </h3>
+            <p class="bt-text">
+                {{ info[0] }}
+            </p>
+            <h3 class="home-text">
+                Nome disciplina
+            </h3>
+            <p class="bt-text">
+                {{ info[1] }}
+            </p>
+            <h3 class="home-text">
+                Código departamento
+            </h3>
+            <p class="bt-text">
+                {{ info[2] }}
+            </p>
+        </div>
+
+        <div class="home-box" id="content-box">
+            <h3 class="home-text">
+              Avaliações  
+            </h3>
+
+            <form action="" method="post" class="temp">
+                <textarea name="comment" rows="4" cols="38" class="text-box" placeholder="Deixe sua avaliação"></textarea>
+                <input type="submit" id="login-btn" value="Enviar">
+            </form>
+
+        </div>
+    </div>
+{% endblock %}

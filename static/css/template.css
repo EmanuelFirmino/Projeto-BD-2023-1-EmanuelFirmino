@@ -1,0 +1,25 @@
+.text-box {
+    resize: none;
+    padding: 0.5em;
+    outline: none;
+    font-family: inherit;
+    border: solid 4px var(--primary-color);
+}
+
+.template-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    gap: 0.6em;
+}
+
+.temp {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8em;
+    justify-content: center;
+    align-items: center;
+}
