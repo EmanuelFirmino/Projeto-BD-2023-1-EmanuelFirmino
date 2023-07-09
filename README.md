@@ -71,6 +71,6 @@ Tela de Disciplinas e Professores
 
 Tabelas criadas no MariaDB
 
-![Exemplo de dados na tabela Professores](https://github.com/EmanuelFirmino/Projeto-BD-2023-1-EmanuelFirmino/blob/main/screenshot_1.png?raw=true)
+![Exemplo de dados na tabela Professores](https://github.com/EmanuelFirmino/Projeto-BD-2023-1-EmanuelFirmino/blob/main/screenshot_7.png?raw=true)
 
 Exemplo de dados na tabela Professores
