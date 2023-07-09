@@ -26,6 +26,22 @@ class queryHandler:
 
 		return result
 
+	def insert_avatar(self, avatar, matricula):
+		with self.handler.cursor() as cursor:
+			cursor.execute('UPDATE Usuarios SET avatar = %s WHERE matricula = %s', (avatar, matricula))
+		self.handler.commit()
+
+	def insert_eval(self, values):
+		with self.handler.cursor() as cursor:
+			cursor.execute('INSERT INTO Avaliacoes (comentario, matricula_autor, id_turma) VALUES (%s, %s, %s)', (values[0], values[1], values[2]))
+		self.handler.commit()
+
+	def get_name(self, matr):
+		with self.handler.cursor() as cursor:
+			cursor.execute('SELECT nome From Usuarios WHERE matricula = %s', (matr,))
+			result = cursor.fetchone()
+		return result
+
 	def get_num_users(self)	:
 
 		with self.handler.cursor() as cursor:
@@ -89,8 +105,39 @@ class queryHandler:
 			result = cursor.fetchone()
 		return result
 
+	def get_id_class(self, cod_dis):
+		with self.handler.cursor() as cursor:
+			cursor.execute('SELECT id FROM Turmas WHERE codigo_disciplina = %s', (cod_dis,))
+			result = cursor.fetchone()
+		return result
+
 	def get_eval(self, course):
-		pass
+		with self.handler.cursor() as cursor:
+			cursor.execute('SELECT * from Avaliacoes WHERE id_turma = (SELECT id FROM Turmas WHERE codigo_disciplina = %s LIMIT 1)', (course,))
+			result = cursor.fetchall()
+		return result
+
+	def get_teachers(self, cod):
+		with self.handler.cursor() as cursor:
+			cursor.execute('SELECT DISTINCT Professores.id, Professores.nome from Professores, Turmas WHERE Turmas.id_professor = Professores.id AND Turmas.codigo_disciplina = %s', (cod,))
+			result = cursor.fetchall()
+		return result
+
+	def insert_den(self, values):
+		with self.handler.cursor() as cursor:
+			cursor.execute('INSERT INTO Denuncias (comentario, id_avaliacao) VALUES (%s, %s)', (values['denuncia'], values['id']))
+		self.handler.commit()
+
+	def insert_eval_prof(self, values):
+		with self.handler.cursor() as cursor:
+			cursor.execute('INSERT INTO Avaliacoes (comentario, matricula_autor, id_professor) VALUES (%s, %s, %s)', (values[0], values[1], values[2]))
+		self.handler.commit()
+
+	def get_eval_prof(self, id):
+		with self.handler.cursor() as cursor:
+			cursor.execute('SELECT * FROM Avaliacoes WHERE id_professor = %s', (id,))
+			result = cursor.fetchall()
+		return result
 
 	def seed(self):
 
@@ -161,13 +208,13 @@ class Usuarios:
 		self.matricula = matricula
 		self.avatar	   = avatar
 		self.senha	   = senha
+
 		self.curso     = curso
 		self.isAdmin   = isAdmin
 
 	def create(self):
 		pass
 		
-
 class Controllers:
 
 	def __init__(self, handler):

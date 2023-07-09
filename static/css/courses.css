@@ -7,6 +7,16 @@
     gap: 0.9em;
 }
 
+.courses-list::-webkit-scrollbar {
+    width: 12px;
+}
+
+
+.courses-list::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, var(--secondary-color), var(--primary-color));
+    border-radius: 15px; /* cor do thumb (a parte móvel da barra de rolagem) */
+  }
+
 .course-card {
     width: 100%;
     height: fit-content;
@@ -29,21 +39,18 @@
 
 .function-btn > a {
     font-weight: 600;
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
     padding: 1em;
     border-radius: 50%;
     border:outset 3px #fff;
-
 }
 
 .course-card:hover {
     background-image: url('../img/banner2.png');
-    
 }
 
 .course-card:focus {
-    background-image: url('../img/banner2.png');
-    
+    background-image: url('../img/banner2.png');   
 }
 
 a {

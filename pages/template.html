@@ -24,7 +24,7 @@
 
 {% block content %}
     <div class="template-panel">
-        <div class="home-box" id="content-box">
+        <div class="home-box" id="content-box-template">
             <h3 class="home-text">
                 Código disciplina
             </h3>
@@ -45,15 +45,74 @@
             </p>
         </div>
 
-        <div class="home-box" id="content-box">
+        <div class="home-box" id="content-box-template">
             <h3 class="home-text">
               Avaliações  
             </h3>
+
+            {% for eval in evals %}
+
+                <div class="eval-box">
+                    <div class="comment">
+                        <p> {{ eval[1] }}</p>
+                    </div>
+                    <p> {{ eval[2] }}</p>
+
+                    <form action="" method="post" class="denc">
+                        <textarea name="denuncia" rows="4" cols="38" class="text-box" placeholder="Achou a avaliação ofensiva? Faça sua denúncia."></textarea>
+                        <input type="hidden" name="id" value="{{ eval[0] }}">
+                        <input type="submit" id="de-btn" value="Denunciar">
+                    </form>
+        
+                </div>
+
+            {% endfor %}
 
             <form action="" method="post" class="temp">
                 <textarea name="comment" rows="4" cols="38" class="text-box" placeholder="Deixe sua avaliação"></textarea>
                 <input type="submit" id="login-btn" value="Enviar">
             </form>
+
+        </div>
+
+        <div class="home-box" id="content-box-template">
+            <h3 class="home-text">
+                Professores
+            </h3>
+
+            
+            
+            {% for teacher in teachers %}
+                <h3 class="home-text">
+                    {{ teacher[1] }}
+                </h3>
+                
+                {% for eval_teacher in evals_teachers[teacher[0]] %}
+
+                    <div class="eval-box">
+                        <div class="comment">
+                            <p> {{ eval_teacher[1] }}</p>
+                        </div>
+                        <p> {{ eval_teacher[2] }}</p>
+
+                        <form action="" method="post" class="denc">
+                            <textarea name="denuncia" rows="4" cols="38" class="text-box" placeholder="Achou a avaliação ofensiva? Faça sua denúncia."></textarea>
+                            <input type="hidden" name="id" value="{{ eval_teacher[0] }}">
+                            <input type="submit" id="de-btn" value="Denunciar">
+                        </form>
+            
+                    </div>
+
+                {% endfor %}
+
+                <form action="" method="post" class="temp">
+                    <textarea name="comment" rows="4" cols="38" class="text-box" placeholder="Deixe sua avaliação para este docente"></textarea>
+                    <input type="hidden" name="id_prof" value="{{ teacher[0] }}">
+                    <input type="submit" id="login-btn" value="Enviar">
+                </form>
+
+            {% endfor %}
+        
 
         </div>
     </div>

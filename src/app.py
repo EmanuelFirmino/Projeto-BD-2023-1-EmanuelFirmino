@@ -70,9 +70,15 @@ class UNBSystem:
 			profile=session['user_auth'][1], n_disc=self.queryHandler.get_num_disc(),
 			n_prof=self.queryHandler.get_num_prof())
 
-		@self.app.route('/perfil/<id>')
+		@self.app.route('/perfil/<id>', methods=['get', 'post'])
 		@auth_required
 		def perfil(id):
+
+			if request.method == 'POST':
+				if 'image' in request.files and session['user_auth'][1] == id:
+					img = request.files['image']
+					self.queryHandler.insert_avatar(img.read(), session['user_auth'][1])
+
 			info = self.queryHandler.get_info(id)
 			if info:
 				if info["avatar"]:
@@ -97,14 +103,45 @@ class UNBSystem:
 				page=page+1, courses=courses, title='Avalia UnB - Cursos')
 			abort(404)
 
-		@self.app.route('/template/<course>')
+		@self.app.route('/template/<course>', methods=['get', 'post'])
 		@auth_required
 		def template(course):
+
 			info = self.queryHandler.get_course_info(course)
-			eval = None
-			print(info)
+
+			if request.method == 'POST':
+
+				if 'id_prof' in request.form:
+					eval = [request.form['comment'], session['user_auth'][1], request.form['id_prof']]
+					print(eval)
+					self.queryHandler.insert_eval_prof(eval)
+
+			
+				elif 'comment' in request.form:								
+					eval = [request.form['comment'], session['user_auth'][1], self.queryHandler.get_id_class(info[0])[0]]
+					self.queryHandler.insert_eval(eval)
+
+				
+				elif 'denuncia' in request.form:
+					self.queryHandler.insert_den(request.form)
+
+				
+
+			evals = self.queryHandler.get_eval(course)
+			evals = list(evals)
+			teachers = self.queryHandler.get_teachers(info[0])
+			evals_teachers = {}
+
+			for teacher in teachers:
+				print(teacher[0])
+				evals_teachers[teacher[0]] = self.queryHandler.get_eval_prof(teacher[0])
+
+			for i in range(len(evals)):
+				evals[i] = list(evals[i])
+				evals[i][2] = self.queryHandler.get_name(evals[i][2])[0]
+
 			return render_template('template.html', course=course, title=f'Avalia UnB - {course}', info=info,
-			profile=session['user_auth'][1])
+			profile=session['user_auth'][1], evals=evals, teachers=teachers, evals_teachers=evals_teachers)
 
 
 	def start(self):

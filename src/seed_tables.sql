@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS Usuarios (
   matricula VARCHAR(20) PRIMARY KEY,
   nome VARCHAR(30) NOT NULL,
-  avatar BLOB,
+  avatar LONGBLOB,
   senha VARCHAR(100) NOT NULL,
   curso VARCHAR(30) NOT NULL,
   isAdmin TINYINT(1) NOT NULL

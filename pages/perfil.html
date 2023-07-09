@@ -35,10 +35,17 @@
                 <img src="../static/img/anon_user.png" alt="Avatar">
             {% endif %}
 
-            <form action="" method="post">
-                <input type="file" name="image">
-                <input type="submit" value="Editar avatar"> 
-            </form>
+            {% with auth_k = session['user_auth'][1] %}
+
+                {% if auth_k == matr %}
+                    <form action="" method="post" enctype="multipart/form-data">
+                        <input type="file" name="image">
+                        <input type="submit" value="Editar avatar"> 
+                    </form>    
+                {% endif %}
+ 
+            {% endwith %}
+
         </div>
         <div class="home-box left-bar" id="content-box">
             <h2 class="home-text" id="full">Nome</h2>

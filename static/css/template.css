@@ -3,7 +3,8 @@
     padding: 0.5em;
     outline: none;
     font-family: inherit;
-    border: solid 4px var(--primary-color);
+    border: solid 4px var(--secondary-color);
+    border-radius: 15px;
 }
 
 .template-panel {
@@ -16,10 +17,85 @@
     gap: 0.6em;
 }
 
+input {
+    cursor: pointer;
+}
+
+.template-panel::-webkit-scrollbar {
+    width: 12px;
+}
+
+
+.template-panel::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, var(--secondary-color), var(--primary-color));
+    border-radius: 15px; /* cor do thumb (a parte móvel da barra de rolagem) */
+  }
+
+#de-btn {
+    background-color: rgba(255,0,0,0.6);
+    padding: 0.8em;
+    color: #fff;
+    width: 30%;
+    font-family: inherit;
+}
+
+#content-box-template {
+    background-image: url('../img/banner.png');
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 12px;
+    background-size:cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align:center;
+    padding: 1.1em;
+    width: 100%;
+}
+
+.denc {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8em;
+    justify-content: center;
+    align-items: center;
+} 
+
 .temp {
     display: flex;
     flex-direction: column;
     gap: 0.8em;
     justify-content: center;
     align-items: center;
+    border-radius: 15px;
+    margin-bottom: 1.5em;
+}
+
+.eval-box {
+    background-image: url('../img/banner2.png');
+    padding: 1.2em;
+    width: 100%;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7em;
+    border-radius: 20px;
+}
+
+.alert-btn {
+    padding: 0.7em;
+    font-family: inherit;
+    background-color: rgba(255,0,0,0.8);
+    color: #fff;
+    border: solid 3px #fff;
+    border-radius: 15px;
+    font-weight: 600;
+}
+
+.comment {
+    background-color: var(--secondary-color);
+    text-align:justify;
+    padding: 0.7em;
+    border-radius: 10px;
+    border: outset 2px #fff;
 }

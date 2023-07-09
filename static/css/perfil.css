@@ -9,6 +9,7 @@
     justify-content: center;
     text-align:center;
     padding: 0.7em;
+    gap: 1.7em;
 }
 
 .home-text-admin {
@@ -53,6 +54,7 @@ form > input {
     color: #fff;
     font-family: inherit;
     border: solid 2px #fff;
+    outline: none;
 }
 
 .left-bar {
