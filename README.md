@@ -24,7 +24,7 @@
 
         USUARIO = 1
         PROFESSOR = 2
-        DISCIPLINA = 3 ```
+        DISCIPLINA = 3
 
 3. Iniciar a execução do MariaDB na porta 3306 [Linux]:
 
@@ -50,3 +50,19 @@
 ![Tela de Login](https://github.com/EmanuelFirmino/Projeto-BD-2023-1-EmanuelFirmino/blob/main/screenshot_1.png?raw=true)
 
 Tela de login do sistema
+
+![Tela de Boas Vindas](https://github.com/EmanuelFirmino/Projeto-BD-2023-1-EmanuelFirmino/blob/main/screenshot_2.png?raw=true)
+
+Tela de boas vindas
+
+![Tela de Perfil](https://github.com/EmanuelFirmino/Projeto-BD-2023-1-EmanuelFirmino/blob/main/screenshot_3.png?raw=true)
+
+Tela de perfil de usuário Administrador
+
+![Tela de Seleção de Disciplina](https://github.com/EmanuelFirmino/Projeto-BD-2023-1-EmanuelFirmino/blob/main/screenshot_4.png?raw=true)
+
+Tela de Seleção de Disciplina
+
+![Tela de Disciplina e Professores](https://github.com/EmanuelFirmino/Projeto-BD-2023-1-EmanuelFirmino/blob/main/screenshot_5.png?raw=true)
+
+Tela de Disciplinas e Professores
