@@ -53,28 +53,28 @@
 
 ![Tela de Login](https://github.com/EmanuelFirmino/Projeto-BD-2023-1-EmanuelFirmino/blob/main/screenshot_1.png?raw=true)
 
-Tela de login do sistema
+* Tela de login do sistema
 
 ![Tela de Boas Vindas](https://github.com/EmanuelFirmino/Projeto-BD-2023-1-EmanuelFirmino/blob/main/screenshot_2.png?raw=true)
 
-Tela de boas vindas
+* Tela de boas vindas
 
 ![Tela de Perfil](https://github.com/EmanuelFirmino/Projeto-BD-2023-1-EmanuelFirmino/blob/main/screenshot_3.png?raw=true)
 
-Tela de perfil de usuário Administrador
+* Tela de perfil de usuário Administrador
 
 ![Tela de Seleção de Disciplina](https://github.com/EmanuelFirmino/Projeto-BD-2023-1-EmanuelFirmino/blob/main/screenshot_4.png?raw=true)
 
-Tela de Seleção de Disciplina
+* Tela de Seleção de Disciplina
 
 ![Tela de Disciplina e Professores](https://github.com/EmanuelFirmino/Projeto-BD-2023-1-EmanuelFirmino/blob/main/screenshot_5.png?raw=true)
 
-Tela de Disciplinas e Professores
+* Tela de Disciplinas e Professores
 
 ![Tabelas criadas no MariaDB](https://github.com/EmanuelFirmino/Projeto-BD-2023-1-EmanuelFirmino/blob/main/screenshot_6.png?raw=true)
 
-Tabelas criadas no MariaDB
+* Tabelas criadas no MariaDB
 
 ![Exemplo de dados na tabela Professores](https://github.com/EmanuelFirmino/Projeto-BD-2023-1-EmanuelFirmino/blob/main/screenshot_7.png?raw=true)
 
-Exemplo de dados na tabela Professores
+* Exemplo de dados na tabela Professores
