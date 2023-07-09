@@ -13,7 +13,7 @@
 
 2. Criar arquivo 'config.py' na pasta 'src' com as suas credenciais do banco de dados (MariaDB) no seguinte formato:
 
-    * ``` # MariaDB info and credentials
+     ``` # MariaDB info and credentials
 
         HOST 	 = <HOST_UTILIZADO [PADRÃO: 127.0.0.1]>
         USER 	 = <NOME_DE_USUÁRIO>
@@ -45,3 +45,8 @@
     * `http://localhost:5000`
 
 
+# Demonstração de telas do Frontend
+
+![Tela de Login](https://github.com/EmanuelFirmino/Projeto-BD-2023-1-EmanuelFirmino/blob/main/screenshot_1.png?raw=true)
+
+Tela de login do sistema
