@@ -37,6 +37,7 @@ input {
     color: #fff;
     width: 30%;
     font-family: inherit;
+    outline: none;
 }
 
 #content-box-template {
