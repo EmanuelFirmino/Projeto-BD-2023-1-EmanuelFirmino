@@ -19,6 +19,7 @@ class queryHandler:
 				cursor.execute('SELECT nome, matricula, curso, isAdmin FROM Usuarios WHERE matricula = %s AND senha = %s',
 								(usr, passwd))
 				result = cursor.fetchone()
+				print(result)
 
 		except MySQLdb.ProgrammingError:
 			print(' **&& erro aqui')
@@ -111,11 +112,27 @@ class queryHandler:
 			result = cursor.fetchone()
 		return result
 
+	def get_dec_eval(self, id):
+		with self.handler.cursor() as cursor:
+			cursor.execute('SELECT * FROM Avaliacoes WHERE id = %s', (id,))
+			result = cursor.fetchone()
+		return result
+
 	def get_eval(self, course):
 		with self.handler.cursor() as cursor:
 			cursor.execute('SELECT * from Avaliacoes WHERE id_turma = (SELECT id FROM Turmas WHERE codigo_disciplina = %s LIMIT 1)', (course,))
 			result = cursor.fetchall()
 		return result
+
+	def del_eval(self, id):
+		with self.handler.cursor() as cursor:
+			cursor.execute('DELETE FROM Avaliacoes WHERE id = %s', (id,))
+		self.handler.commit()
+
+	def del_user(self, matr):
+		with self.handler.cursor() as cursor:
+			cursor.execute('DELETE FROM Usuarios WHERE matricula = %s', (matr,))
+		self.handler.commit()
 
 	def get_teachers(self, cod):
 		with self.handler.cursor() as cursor:
@@ -128,6 +145,12 @@ class queryHandler:
 			cursor.execute('INSERT INTO Denuncias (comentario, id_avaliacao) VALUES (%s, %s)', (values['denuncia'], values['id']))
 		self.handler.commit()
 
+	def get_decs(self):
+		with self.handler.cursor() as cursor:
+			cursor.execute('SELECT * FROM Denuncias;')
+			result = cursor.fetchall()
+		return result
+
 	def insert_eval_prof(self, values):
 		with self.handler.cursor() as cursor:
 			cursor.execute('INSERT INTO Avaliacoes (comentario, matricula_autor, id_professor) VALUES (%s, %s, %s)', (values[0], values[1], values[2]))
@@ -137,6 +160,12 @@ class queryHandler:
 		with self.handler.cursor() as cursor:
 			cursor.execute('SELECT * FROM Avaliacoes WHERE id_professor = %s', (id,))
 			result = cursor.fetchall()
+		return result
+
+	def is_Admin(self, matr):
+		with self.handler.cursor() as cursor:
+			cursor.execute('SELECT isAdmin FROM Usuarios WHERE matricula = %s', (matr,))
+			result = cursor.fetchone()[0]
 		return result
 
 	def seed(self):

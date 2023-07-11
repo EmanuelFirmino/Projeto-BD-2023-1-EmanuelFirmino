@@ -29,6 +29,14 @@ class UNBSystem:
 				return auth(*args, **kwargs)
 			return decorator
 
+		def auth_required_admin(auth):
+			@wraps(auth)
+			def decorator(*args, **kwargs):
+				if 'user_auth' not in session or (not self.queryHandler.is_Admin(session['user_auth'][1])):
+					return redirect(url_for('index'))
+				return auth(*args, **kwargs)
+			return decorator
+
 		@self.app.errorhandler(404)
 		def not_found(err):
 			return render_template('404.html', title='Avalia UnB - Página não encontrada!'), 404
@@ -143,6 +151,29 @@ class UNBSystem:
 			return render_template('template.html', course=course, title=f'Avalia UnB - {course}', info=info,
 			profile=session['user_auth'][1], evals=evals, teachers=teachers, evals_teachers=evals_teachers)
 
+		@self.app.route('/dashboard', methods=['get', 'post'])
+		@auth_required_admin
+		def dashboard():
+
+			if request.method == 'POST':
+				form = request.form
+
+				if form['type'] == 'de':
+					self.queryHandler.del_eval(form['id'])
+
+
+				elif form['type'] == 'du':
+					self.queryHandler.del_user(form['matricula'])
+
+			decs = self.queryHandler.get_decs()
+			evals_decs = dict()
+
+			for dec in decs:
+				evals_decs[dec[2]] = self.queryHandler.get_dec_eval(dec[2])
+
+			return render_template('dashboard.html', title='Avalia UnB - Dashboard Administrador', profile=session['user_auth'][1],
+			decs=decs, eval_decs=evals_decs)
+
 
 	def start(self):
 		self.app.run(debug=True)
@@ -159,6 +190,7 @@ if __name__ == '__main__':
  
  --run:  Inicia a aplicação.
  --feed: Cria as tabelas (se não existirem) e alimenta o banco de dados.
+ --insert-user: Insere um novo usuário no sistema.
 
 		   '''	
 	if len(argv) == 2:

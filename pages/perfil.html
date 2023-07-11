@@ -60,13 +60,22 @@
         <div class="home-box" id="content-box">
 
             {% if isAdmin %}
-            <div class="contain-admin">
-            <h1 class="home-text-admin" id="full"> Administrador </h1>
-            </div>
+                <div class="contain-admin">
+                <h1 class="home-text-admin" id="full"> Administrador </h1>
+                </div>
             {% else %}
-            <h1 class="home-text" id="full"> Aluno </h1>
+                <h1 class="home-text" id="full"> Aluno </h1>
             {% endif %}
-        
+
+                
+            {% with auth_k = session['user_auth'][1] %}
+
+                {% if isAdmin and auth_k == matr %}
+                    <a href="/dashboard" class="dashboard-btn"> Dashboard </a>
+                {% endif %}
+
+            {% endwith %}
+            
         </div>
 
     </div>

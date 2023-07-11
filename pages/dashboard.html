@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+    <link rel="stylesheet" type="text/css" href="../static/css/login.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/home.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/perfil.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/template.css"> 
+    
+{% endblock %}
+
+{% block utilities %}
+
+    <a class="icon-utility" href="/home">
+        <img src="../static/img/home.png" alt="Home">
+    </a>
+    <a class="icon-utility" href="/perfil/{{ profile }}">
+        <img src="../static/img/perfil.png" alt="Home">
+    </a>
+    <a class="icon-utility" href="/courses?page=1">
+        <img src="../static/img/list.png" alt="Home">
+    </a>
+    <a class="icon-utility" href="/logout">
+        <img src="../static/img/logout.png" alt="Home">
+    </a>
+    
+{% endblock %}
+
+{% block content %}
+
+    <div class="template-panel">
+        <div class="home-box" id="content-box-template">
+            <h3 class="home-text">
+                Avaliação de Denúncias
+            </h3>           
+        </div>
+        {% for dec in decs %}            
+
+            <div class="dec-box">
+                <div class="dec-message">
+                    <h3 class="home-text dec-txt">
+                        {{ dec[1] }}
+                    </h3>
+                    <div class="evaluation">
+                        {{ eval_decs[dec[2]][1] }}
+                    </div>
+                    <div class="evaluation evaluation-autor">
+                        {{ eval_decs[dec[2]][2]}}
+                    </div>
+
+                    <form action="" id="del" method="post">
+                        <input type="hidden" name="type" value="de">
+                        <input type="hidden" name="id" value="{{ eval_decs[dec[2]][0] }}">
+                        <input type="submit" value="Excluir avaliação">
+                    </form>
+                    
+                    <form action="" id="del" method="post">
+                        <input type="hidden" name="type" value="du">
+                        <input type="hidden" name="matricula" value="{{ eval_decs[dec[2]][2] }}">
+                        <input type="submit" value="Excluir usuário">
+                    </form>
+
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>
+
+{% endblock %}

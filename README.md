@@ -37,7 +37,7 @@
 4. Alimentar o banco de dados (Certifique-se de estar na pasta 'src'):
 
     * `python3 app.py --feed`
-
+    * Você pode inserir um usuário no sistema executando o comando: `python3 app.py --insert-user` e siga informe o valor para cada atributo (avatar é opcional)
     * O processo pode levar alguns minutos
 
 5. Executar a aplicação web:
@@ -77,4 +77,4 @@
 
 ![Exemplo de dados na tabela Professores](https://github.com/EmanuelFirmino/Projeto-BD-2023-1-EmanuelFirmino/blob/main/screenshots/screenshot_7.png?raw=true)
 
-* Exemplo de dados na tabela Professores
+* Exemplo de dados na tabela Professores    

@@ -1,0 +1,53 @@
+.dec-box {
+    background-image: url('../img/banner3.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+    width: 100%;
+    padding: 1.2em;
+    flex-direction: column;
+    display: flex;
+    gap: 5em;
+}
+
+.dec-txt {
+    padding: 0.8em;
+    background-color: darkred;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8em;
+    border-image: linear-gradient(to right, darkred, #fff) 8;
+}
+
+.dec-message {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8em;
+}
+
+form > input {
+    background-color: rgba(255,0,0,0.5);
+    border-radius: 20px;
+    border: double 8px #fff;
+    font-size: 1.3em;
+
+}
+
+form > input:focus, input:hover {
+    background-color: rgba(0,0,0,0.5);
+    transition: .3s ease-in-out;
+}
+
+.evaluation {
+    background-color: black;
+    padding: 0.9em;
+    background-color: rgba(255,255,255,0.8);
+    color: #000;
+    text-align: justify;
+    font-weight: 600;
+    border-radius: 15px 0;
+}
+
+.evaluation-autor {
+    text-align: center;
+}

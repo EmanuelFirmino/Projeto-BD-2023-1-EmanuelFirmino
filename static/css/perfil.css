@@ -12,6 +12,23 @@
     gap: 1.7em;
 }
 
+.dashboard-btn {
+
+    background: linear-gradient(to top,  #ba297e, #ba29b8, #8129ba,#5429ba);
+    color: #fff;
+    text-decoration: none;
+    padding: 0.7em;
+    border: solid 2px #fff;
+    border-radius: 30px;
+    font-weight: 600;
+}
+
+.dashboard-btn:focus, .dashboard-btn:hover {
+
+    opacity: 70%;
+    transition: .3s ease-in-out;
+}
+
 .home-text-admin {
     font-size: 2em;
     background: linear-gradient(to right, #ba297e, #ba29b8, #8129ba,#5429ba);
