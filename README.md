@@ -1,5 +1,9 @@
 # Sistema de Avaliação de Disciplinas e Docentes UnB - [Projeto Banco de Dados 2023/1]
 
+# Modelo Lógico
+
+![MODEL](https://github.com/EmanuelFirmino/Projeto-BD-2023-1-EmanuelFirmino/blob/main/modelo_logico.png?raw=true)
+
 # Diagrama Entidade-Relacionamento
 
 ![MER](https://github.com/EmanuelFirmino/Projeto-BD-2023-1-EmanuelFirmino/blob/main/mer.png?raw=true)
