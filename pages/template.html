@@ -46,6 +46,7 @@
         </div>
 
         <div class="home-box" id="content-box-template">
+
             <h3 class="home-text">
               Avaliações  
             </h3>
@@ -57,7 +58,16 @@
                         <p> {{ eval[1] }}</p>
                     </div>
                     <p> {{ eval[2] }}</p>
+        
+                    {% if eval[2] == name %}
 
+                        <form action="" method="post" class="denc">
+                            <input type="hidden" name="id_delete" value="{{ eval[0] }}">
+                            <input type="submit" id="de-btn" value="Excluir avaliação">
+                        </form>
+            
+                    {% endif %}
+                    
                     <form action="" method="post" class="denc">
                         <textarea name="denuncia" rows="4" cols="38" class="text-box" placeholder="Achou a avaliação ofensiva? Faça sua denúncia."></textarea>
                         <input type="hidden" name="id" value="{{ eval[0] }}">
@@ -79,8 +89,6 @@
             <h3 class="home-text">
                 Professores
             </h3>
-
-            
             
             {% for teacher in teachers %}
                 <h3 class="home-text">
@@ -100,7 +108,7 @@
                             <input type="hidden" name="id" value="{{ eval_teacher[0] }}">
                             <input type="submit" id="de-btn" value="Denunciar">
                         </form>
-            
+
                     </div>
 
                 {% endfor %}
@@ -113,7 +121,6 @@
 
             {% endfor %}
         
-
         </div>
     </div>
 {% endblock %}

@@ -134,6 +134,11 @@ class queryHandler:
 			cursor.execute('DELETE FROM Usuarios WHERE matricula = %s', (matr,))
 		self.handler.commit()
 
+	def del_dec(self, id):
+		with self.handler.cursor() as cursor:
+			cursor.execute('DELETE FROM Denuncias WHERE id = %s', (id,))
+		self.handler.commit()
+
 	def get_teachers(self, cod):
 		with self.handler.cursor() as cursor:
 			cursor.execute('SELECT DISTINCT Professores.id, Professores.nome from Professores, Turmas WHERE Turmas.id_professor = Professores.id AND Turmas.codigo_disciplina = %s', (cod,))
@@ -227,6 +232,28 @@ class queryHandler:
 					cursor.execute('''INSERT INTO Turmas (turma, horario, id_professor, codigo_disciplina) VALUES (%s, %s, (SELECT id FROM Professores WHERE nome = %s), %s)''', (line[0], line[3], line[2], line[7]))
 					
 			self.handler.commit()
+
+		users = [['190105747',
+		 		 'Emanuel Firmino Abrantes',
+				 'batata',
+				 'Engenharia de Computação',
+				 1
+				 ],
+				 ['28282828',
+				  'Maligen Bridges',
+				  'mama123',
+				  'Engenharia Mecatrônica',
+				  0
+				 ],
+			     ['28064212',
+				  'Frank',
+				  'cafebabe',
+				  'Física',
+				  0
+				 ]
+				]
+
+		
 
 		print('\n * Banco de dados alimentado com sucesso! *\n')
 

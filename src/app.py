@@ -121,35 +121,35 @@ class UNBSystem:
 
 				if 'id_prof' in request.form:
 					eval = [request.form['comment'], session['user_auth'][1], request.form['id_prof']]
-					print(eval)
 					self.queryHandler.insert_eval_prof(eval)
 
-			
+				elif 'id_delete' in request.form:
+					self.queryHandler.del_eval(request.form['id_delete'])
+
 				elif 'comment' in request.form:								
 					eval = [request.form['comment'], session['user_auth'][1], self.queryHandler.get_id_class(info[0])[0]]
 					self.queryHandler.insert_eval(eval)
 
-				
 				elif 'denuncia' in request.form:
 					self.queryHandler.insert_den(request.form)
-
-				
 
 			evals = self.queryHandler.get_eval(course)
 			evals = list(evals)
 			teachers = self.queryHandler.get_teachers(info[0])
 			evals_teachers = {}
+			name = self.queryHandler.get_name(session['user_auth'][1])[0]
 
 			for teacher in teachers:
-				print(teacher[0])
 				evals_teachers[teacher[0]] = self.queryHandler.get_eval_prof(teacher[0])
 
 			for i in range(len(evals)):
 				evals[i] = list(evals[i])
 				evals[i][2] = self.queryHandler.get_name(evals[i][2])[0]
 
+			print(evals_teachers)
+
 			return render_template('template.html', course=course, title=f'Avalia UnB - {course}', info=info,
-			profile=session['user_auth'][1], evals=evals, teachers=teachers, evals_teachers=evals_teachers)
+			profile=session['user_auth'][1], evals=evals, teachers=teachers, evals_teachers=evals_teachers, name=name)
 
 		@self.app.route('/dashboard', methods=['get', 'post'])
 		@auth_required_admin
@@ -165,7 +165,11 @@ class UNBSystem:
 				elif form['type'] == 'du':
 					self.queryHandler.del_user(form['matricula'])
 
+				elif form['type'] == 'dd':
+					self.queryHandler.del_dec(form['id_dec'])
+
 			decs = self.queryHandler.get_decs()
+			print(decs[0])
 			evals_decs = dict()
 
 			for dec in decs:
