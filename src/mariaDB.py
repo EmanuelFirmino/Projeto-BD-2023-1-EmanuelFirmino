@@ -19,7 +19,6 @@ class queryHandler:
 				cursor.execute('SELECT nome, matricula, curso, isAdmin FROM Usuarios WHERE matricula = %s AND senha = %s',
 								(usr, passwd))
 				result = cursor.fetchone()
-				print(result)
 
 		except MySQLdb.ProgrammingError:
 			print(' **&& erro aqui')
@@ -175,6 +174,12 @@ class queryHandler:
 
 	def seed(self):
 
+		with self.handler.cursor() as cursor:
+			cursor.execute('DELETE FROM Avaliacoes')
+			cursor.execute('DELETE FROM Turmas')
+		self.handler.commit()
+
+
 		# Cria as tabelas, se não existirem
 
 		try:
@@ -233,44 +238,50 @@ class queryHandler:
 					
 			self.handler.commit()
 
-		users = [['190105747',
-		 		 'Emanuel Firmino Abrantes',
+		users = [['19192020',
+		 		 'Admin Example',
 				 'batata',
 				 'Engenharia de Computação',
 				 1
 				 ],
-				 ['28282828',
+
+				 ['282828281',
 				  'Maligen Bridges',
 				  'mama123',
-				  'Engenharia Mecatrônica',
+				  'Filosofia',
 				  0
 				 ],
-			     ['28064212',
+
+			     ['280642129',
 				  'Frank',
 				  'cafebabe',
 				  'Física',
 				  0
 				 ]
 				]
+		 
+		for user in users:
 
-		
+			with self.handler.cursor() as cursor:
+				hash_id = sha256()
+				hash_id.update(user[2].encode('utf-8'))
+				passwd = hash_id.hexdigest()
+				cursor.execute('INSERT IGNORE INTO Usuarios (matricula, nome, senha, curso, isAdmin) VALUES (%s, %s, %s, %s, %s)', (user[0], user[1], passwd, user[3], user[4]))
+			self.handler.commit()
 
 		print('\n * Banco de dados alimentado com sucesso! *\n')
 
 class Usuarios:
 
 	def __init__(self, matricula, nome, avatar, senha, curso, isAdmin):
+
 		self.nome 	   = nome
 		self.matricula = matricula
 		self.avatar	   = avatar
 		self.senha	   = senha
-
 		self.curso     = curso
 		self.isAdmin   = isAdmin
-
-	def create(self):
-		pass
-		
+	
 class Controllers:
 
 	def __init__(self, handler):

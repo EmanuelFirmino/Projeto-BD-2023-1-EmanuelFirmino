@@ -145,9 +145,7 @@ class UNBSystem:
 			for i in range(len(evals)):
 				evals[i] = list(evals[i])
 				evals[i][2] = self.queryHandler.get_name(evals[i][2])[0]
-
-			print(evals_teachers)
-
+				
 			return render_template('template.html', course=course, title=f'Avalia UnB - {course}', info=info,
 			profile=session['user_auth'][1], evals=evals, teachers=teachers, evals_teachers=evals_teachers, name=name)
 
@@ -169,7 +167,6 @@ class UNBSystem:
 					self.queryHandler.del_dec(form['id_dec'])
 
 			decs = self.queryHandler.get_decs()
-			print(decs[0])
 			evals_decs = dict()
 
 			for dec in decs:
