@@ -29,6 +29,7 @@ form > input {
     background: linear-gradient(to right,  #ba297e, #ba29b8, #8129ba,#5429ba);  
     font-size: 1.3em;
     transition: .7s linear all;
+    border: none;
     border-radius: 30px;
 }
 
