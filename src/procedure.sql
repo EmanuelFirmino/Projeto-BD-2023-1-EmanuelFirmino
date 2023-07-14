@@ -1,9 +1,8 @@
 DELIMITER //
-
-CREATE PROCEDURE getuser (OUT adm INT)
-	BEGIN
-		SELECT matricula FROM Usuarios WHERE Usuarios.isAdmin = adm;
-	END;
-//
-
+CREATE PROCEDURE GetAdminUsers()
+BEGIN
+    SELECT *
+    FROM Usuarios
+    WHERE isAdmin = 1;
+END //
 DELIMITER;
