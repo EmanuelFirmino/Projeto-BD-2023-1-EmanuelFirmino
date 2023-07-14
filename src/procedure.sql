@@ -1,8 +1,12 @@
-DELIMITER //
-CREATE PROCEDURE GetAdminUsers()
+CREATE PROCEDURE IF NOT EXISTS get_adm()
 BEGIN
-    SELECT *
+    SELECT 1
     FROM Usuarios
     WHERE isAdmin = 1;
-END //
-DELIMITER;
+END;
+
+CREATE PROCEDURE IF NOT EXISTS get_reports()
+BEGIN
+    SELECT *
+    FROM Denuncias;
+END;

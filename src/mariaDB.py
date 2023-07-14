@@ -38,7 +38,7 @@ class queryHandler:
 
 	def get_name(self, matr):
 		with self.handler.cursor() as cursor:
-			cursor.execute('SELECT nome From Usuarios WHERE matricula = %s', (matr,))
+			cursor.execute('SELECT nome FROM GetNameUser WHERE matricula = %s', (matr,))
 			result = cursor.fetchone()
 		return result
 
@@ -151,7 +151,7 @@ class queryHandler:
 
 	def get_decs(self):
 		with self.handler.cursor() as cursor:
-			cursor.execute('SELECT * FROM Denuncias;')
+			cursor.execute('CALL get_reports()')
 			result = cursor.fetchall()
 		return result
 
@@ -193,6 +193,20 @@ class queryHandler:
 
 		except:
 			print('Erro ao alimentar o banco de dados!')
+
+		with open('procedure.sql') as fp:
+			commands = fp.read()
+
+		with self.handler.cursor() as cursor:
+			cursor.execute(commands)
+
+		with open('view.sql') as fp:
+			commands = fp.read()
+
+		with self.handler.cursor() as cursor:
+			cursor.execute(commands)
+
+		self.handler.commit
 
 		# Alimenta a tabela Departamentos com o arquivo csv
 

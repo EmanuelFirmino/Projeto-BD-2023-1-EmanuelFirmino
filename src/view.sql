@@ -1,4 +1,4 @@
-CREATE VIEW ProfessorMaisAvaliado AS
+CREATE VIEW IF NOT EXISTS MostEvaluatedTeacher AS
 SELECT prof.id AS id_professor, prof.nome AS nome_professor, COUNT(eval.id) AS total_avaliacoes
 FROM Professores prof
 JOIN Turmas t ON prof.id = t.id_professor
@@ -12,4 +12,6 @@ HAVING COUNT(eval.id) = (
     LIMIT 1
 );
 
-SELECT * FROM ProfessorMaisAvaliado;
+CREATE VIEW IF NOT EXISTS GetNameUser AS
+SELECT matricula, nome
+FROM Usuarios;
